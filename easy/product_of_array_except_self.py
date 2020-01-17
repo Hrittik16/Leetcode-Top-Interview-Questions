@@ -1,24 +1,27 @@
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
-        prod = 1
+        prefix = []
+        suffix = [None]*len(nums)
         output = []
-        num_of_zeros = 0
-        for i in nums:
+        for i in range(0, len(nums)):
             if i == 0:
-                num_of_zeros += 1
-                continue
-            prod *= i
-        if num_of_zeros == 1:
-            for i in nums:
-                if i == 0:
-                    output.append(prod)
-                else:
-                    output.append(0)
-        elif num_of_zeros >= 1:
-            for i in nums:
-                output.append(0)
-        else:
-            for i in nums:
-                output.append(prod//i)
+                prefix.append(nums[i])
+            else:
+                prefix.append(nums[i]*prefix[i-1])
+        i = len(nums)-1
+        while i >= 0:
+            if i == len(nums)-1:
+                suffix[i] = nums[i]
+            else:
+                suffix[i] = nums[i]*suffix[i+1]
+            i -= 1
+        for i in range(0, len(nums)):
+            sol = 1
+            if i-1 >= 0:
+                sol *= prefix[i-1]
+            if i+1 <= len(nums)-1:
+                sol *= suffix[i+1]
+            output.append(sol)
         return output
+    
         
