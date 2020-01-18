@@ -1,5 +1,10 @@
 class Solution {
 public:
+    Solution() {
+        ios::sync_with_stdio(false);
+        cin.tie(NULL);
+        cout.tie(NULL);
+    }
     bool containsDuplicate(vector<int>& nums) {
         if(nums.size() <= 1) 
             return 0;
