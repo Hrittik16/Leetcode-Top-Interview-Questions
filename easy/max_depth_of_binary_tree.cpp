@@ -9,6 +9,11 @@
  */
 class Solution {
 public:
+    Solution() {
+        ios::sync_with_stdio(false);
+        cin.tie(NULL);
+        cout.tie(NULL);
+    }
     // The commented solution also works but take extra space
     /*
     void dfs(TreeNode* root, vector<int>& dist, int level) {
