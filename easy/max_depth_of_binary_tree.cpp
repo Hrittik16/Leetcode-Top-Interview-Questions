@@ -9,6 +9,8 @@
  */
 class Solution {
 public:
+    // The commented solution also works but take extra space
+    /*
     void dfs(TreeNode* root, vector<int>& dist, int level) {
         if(root == NULL)
             return;
@@ -16,7 +18,9 @@ public:
         dfs(root->left, dist, level+1);
         dfs(root->right, dist, level+1);
     }
+    */
     int maxDepth(TreeNode* root) {
+        /*
         if(root == NULL)
             return 0;
         vector<int> dist(1e5, 0);
@@ -25,5 +29,9 @@ public:
         for(int i = 0; i < 1e5; i++)
             mx = max(mx, dist[i]);
         return mx;
+        */
+        if(root == NULL)
+            return 0;
+        return 1 + max(maxDepth(root->left), maxDepth(root->right));
     }
 };
