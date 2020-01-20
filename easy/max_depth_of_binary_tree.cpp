@@ -30,6 +30,9 @@ public:
             mx = max(mx, dist[i]);
         return mx;
         */
+
+        // Better solution
+        // Time Complexity : O(n) -> Since there are n nodes and n-1 edges.We traverse each node once
         if(root == NULL)
             return 0;
         return 1 + max(maxDepth(root->left), maxDepth(root->right));
