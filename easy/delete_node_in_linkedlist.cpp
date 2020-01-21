@@ -8,17 +8,17 @@
  */
 class Solution {
 public:
-    // Time Complexity - O(n)
+    Solution() {
+        ios::sync_with_stdio(false);
+        cin.tie(NULL);
+        cout.tie(NULL);
+    }
+    // Time Complexity - O(1)
     // Space Complexity - O(1)
     void deleteNode(ListNode* node) {
-        ListNode* curr = node;
-        ListNode* next = curr->next;
-        while(next->next != NULL) {
-            curr->val = next->val;
-            curr = next;
-            next = next->next; 
-        }
-        curr->val = next->val;
-        curr->next = NULL;
+        node->val = node->next->val;
+        ListNode *next = node->next;
+        node->next = node->next->next;
+        delete next;
     }
 };
