@@ -26,6 +26,9 @@ class Solution:
         return head
         """
         # Recursive Solution
-        if head is None:
+        if head is None or head.next is None:
             return head
-        
+        rev = self.reverseList(head.next)
+        head.next.next = head
+        head.next = None
+        return rev
